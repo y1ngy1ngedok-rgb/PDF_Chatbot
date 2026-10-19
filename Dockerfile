@@ -6,8 +6,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
     && useradd --create-home --uid 10001 app
 
-COPY --chown=app:app crewai_pdf_chatbot.py .
+COPY --chown=app:app PDF_Chatbot.py .
 
 USER app
 
-ENTRYPOINT ["python", "crewai_pdf_chatbot.py"]
+ENTRYPOINT ["python", "PDF_Chatbot.py"]

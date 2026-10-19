@@ -35,10 +35,16 @@ ollama pull llama3.2:3b
 
 ## Usage
 
-Run this command from the directory containing `crewai_pdf_chatbot.py`:
+Run this command from the directory containing `PDF_Chatbot.py`:
 
 ```bash
-python crewai_pdf_chatbot.py
+python PDF_Chatbot.py
+```
+
+You can also use the compatibility launcher:
+
+```bash
+python run_chatbot.py
 ```
 
 Choose one of the following modes when prompted:
@@ -49,7 +55,7 @@ Choose one of the following modes when prompted:
 You can optionally pass a PDF path as an argument:
 
 ```bash
-python crewai_pdf_chatbot.py "Game Design Documentation-2.pdf"
+python PDF_Chatbot.py "Game Design Documentation-2.pdf"
 ```
 
 If you select PDF mode, the program uses the provided file or prompts you for a filename if none was provided. You can use either a relative or an absolute path.

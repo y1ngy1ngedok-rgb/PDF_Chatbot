@@ -56,6 +56,28 @@ If you select PDF mode, the program uses the provided file or prompts you for a 
 
 Next, select an installed model and enter your questions at the `คุณ:` prompt. Type `exit` or `quit` to end the conversation.
 
+## Run with Docker Compose
+
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and start it. From the project directory, run:
+
+```bash
+docker compose up --build
+```
+
+Compose builds the chatbot image, starts Ollama, downloads `qwen2.5:1.5b` the first time, and then opens the interactive chatbot. The model is kept in a Docker volume for later runs. Stop the services with `Ctrl+C`, then run `docker compose down` to remove the containers.
+
+To use a different model for the automatic download, set `OLLAMA_MODEL` before starting Compose:
+
+```bash
+OLLAMA_MODEL=llama3.2:3b docker compose up --build
+```
+
+To ask questions about a PDF, put the file in the `pdfs` directory and pass its path inside the container:
+
+```bash
+docker compose run --rm chatbot pdfs/my-document.pdf
+```
+
 ## PDF Handling
 
 The program extracts text from each page using `pypdf` and includes page labels in the context, such as `[Page 1]`. When answering questions about a document, it prioritizes the PDF content.

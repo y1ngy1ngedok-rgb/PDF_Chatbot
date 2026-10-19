@@ -1,11 +1,12 @@
 
 import argparse
+import os
 from pathlib import Path
 
 import requests
 from pypdf import PdfReader
 
-OLLAMA_URL = "http://127.0.0.1:11434"
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
 OLLAMA_MODELS = ("qwen2.5:1.5b", "llama3.2:3b")
 
 def read_pdf(pdf_path):
@@ -19,6 +20,7 @@ def read_pdf(pdf_path):
                 f"[Page {page_number + 1}]\n{text}"
             )
     return "\n\n".join(pages)
+
 
 def get_installed_models():
     response = requests.get(f"{OLLAMA_URL}/api/tags", timeout=5)
